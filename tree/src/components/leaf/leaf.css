@@ -1,0 +1,46 @@
+.leaf {
+    padding: 10px 20px;
+    background-color: #040F0F;
+    color: #fff;
+    border-radius: 15px;
+    transition: color 0.4s ease, background-color 0.4s ease;
+}
+
+.leaf input {
+    max-width: 70vw;
+    width: fit-content;
+    background-color: #040F0F; 
+    color: #fff; 
+    border: none; 
+    border-radius: 15px; 
+    font-size: 20px; 
+    font-weight: 700; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    box-sizing: border-box; 
+    transition: color 0.4s ease, background-color 0.4s ease; 
+}
+
+
+.leaf input:focus {
+    outline: none;
+    background-color: #fff;
+    color: #040F0F;
+}
+
+.children-div {
+    margin-left: 30px;
+}
+
+.leaf:hover, .leaf:hover input, .leaf.chosen input {
+    background-color: #fff;
+    color: #040F0F;
+    cursor: pointer;
+}
+
+.leaf.chosen {
+    background-color: #fff;
+    color: #040F0F;
+    cursor: pointer;
+    border: 2px solid #040F0F;
+}
