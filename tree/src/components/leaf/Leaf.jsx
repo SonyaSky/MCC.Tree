@@ -1,25 +1,26 @@
 import React, {useState} from 'react';
 
 import './leaf.css';
+import { useTree } from '../../context/TreeContext';
 
-const Leaf = ({name, childrenLeaves, chosen, onClick}) => {
-    const [children, setChildren] = useState(childrenLeaves);
+const Leaf = ({id, name, childrenLeaves}) => {
     const [leafName, setLeafName] = useState(name);
+    const {chooseLeaf, chosenLeafId} = useTree();
 
     const handleNameChange = (event) => {
         setLeafName(event.target.value); 
     };
 
-    const handleClick = (event) => {
-        event.stopPropagation(); 
-        onClick();
+    const handleClick = () => {
+        chooseLeaf(id);
+        console.log(id);
     };
 
 
     return (
         <>
-        <div className={chosen ? "leaf chosen" : "leaf"} onClick={handleClick}>
-        {chosen ?  
+        <div className={chosenLeafId === id ? "leaf chosen" : "leaf"} onClick={handleClick}>
+        {chosenLeafId === id ?  
             (<input
                 type="text"
                 value={leafName}
@@ -28,8 +29,8 @@ const Leaf = ({name, childrenLeaves, chosen, onClick}) => {
                 disabled/>) : (<span>{leafName}</span>)}
         </div>
         <div className="children-div">
-            {children.map(({id, name, children}) => (
-                <Leaf key={id} name={name} chosen={chosen} childrenLeaves={children} onClick={handleClick}/>
+            {!childrenLeaves.Empty && childrenLeaves.map(({id, name, children}) => (
+                <Leaf key={id} name={name} childrenLeaves={children} id={id}/>
             ))}
         </div>
         </>

@@ -5,42 +5,31 @@ import Button from '../button/button';
 import Leaf from '../leaf/Leaf';
 import { useTree } from '../../context/TreeContext';
 
-const baseLeaves = [
-    {
-        id: 1, name: "Node 1", children:[{id: 3, name: "Node 3", children: []}]
-    },
-    {
-        id: 2, name: "Node 2", children: []
-    }
-]
-
 const Tree = () => {
-    const {deleteLeaf, addLeaf, tree} = useTree();
-    const [chosenLeafId, setChosenLeafId] = useState(null);
-
-    const handleLeafClick = (id) => {
-        setChosenLeafId(id === chosenLeafId ? null : id);
-    };
+    const {deleteLeaf, addLeaf, tree, resetTree, setChosenLeafId} = useTree();
 
     const handleDelete = () => {
-        if (chosenLeafId != null) {
-            deleteLeaf(chosenLeafId);
-            setChosenLeafId(null);
-        }
+        deleteLeaf();
     }
 
-    const handleAddNode = () => {
-        const newNode = { name: "New Node" };
-        addLeaf(chosenLeafId, newNode);
+    const handleAddLeaf = () => {
+        const newLeaf = { name: "New Node" };
+        addLeaf(newLeaf);
+    };
+
+    const handleContainerClick = (e) => {
+        if (!e.target.closest('.leaf')) {
+            setChosenLeafId(null); 
+        }
     };
     
     return (
-        <div className='tree-div'>
+        <div className='tree-div' onClick={handleContainerClick}>
             <div className="buttons-div">
-                <Button title="Add" onClick={handleAddNode}/>
+                <Button title="Add" onClick={handleAddLeaf}/>
                 <Button title="Delete" onClick={handleDelete}/>
                 <Button title="Edit"/>
-                <Button title="Reset"/>
+                <Button title="Reset" onClick={resetTree}/>
             </div>
             <div className='right-div'>
                 <h1 className='title'>tree</h1>
@@ -50,8 +39,7 @@ const Tree = () => {
                         key={id} 
                         name={name} 
                         childrenLeaves={children} 
-                        chosen={chosenLeafId === id}
-                        onClick={() => handleLeafClick(id)}/>
+                        id={id}/>
                     ))}
                 </div>
             </div>

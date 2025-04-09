@@ -29,7 +29,12 @@
 }
 
 .children-div {
-    margin-left: 30px;
+    margin: 5px 0px 0px 30px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: start;
+    align-items: start; 
+    /* row-gap: 5px; */
 }
 
 .leaf:hover, .leaf:hover input, .leaf.chosen input {

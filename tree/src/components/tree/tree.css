@@ -36,6 +36,6 @@
     flex-direction: column; 
     justify-content: start;
     align-items: start; 
-    row-gap: 5px;
+    /* row-gap: 5px; */
     padding: 10px 20px;
 }

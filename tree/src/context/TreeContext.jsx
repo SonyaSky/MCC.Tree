@@ -13,48 +13,62 @@ const baseLeaves = [
 
 export const TreeProvider = ({children}) => {
     const [tree, setTree] = useState(baseLeaves);
-    let idCounter = 4;
+    const [chosenLeafId, setChosenLeafId] = useState(null);
 
-    const addLeaf = (parentId, newLeaf) => {
-        const updatedTree = addLeafRecursively(tree, parentId, newLeaf);
-        setTree(updatedTree);
-        // console.log(tree);
+    const addLeaf = (newLeaf) => {
+        if (chosenLeafId === null) {
+            const newLeafWithId = { ...newLeaf, id: Date.now(), children: [] };
+            setTree([...tree, newLeafWithId]); 
+        } else {
+            const updatedTree = addLeafRecursively(tree, chosenLeafId, newLeaf);
+            setTree(updatedTree);
+        }
+        console.log(tree);
+        setChosenLeafId(null);
     };
 
     const addLeafRecursively = (leaves, parentId, newLeaf) => {
         return leaves.map(leaf => {
             if (leaf.id === parentId) {
-                const newLeafWithId = { ...newLeaf, id: idCounter++, children: [] }; 
+                const newLeafWithId = { ...newLeaf, id: Date.now(), children: [] }; 
                 console.log(newLeafWithId);
                 return { ...leaf, children: [...leaf.children, newLeafWithId] };
             }
             if (leaf.children) {
-                return { ...leaves, children: addLeafRecursively(leaf.children, parentId, newLeaf) };
+                return { ...leaf, children: addLeafRecursively(leaf.children, parentId, newLeaf) };
             }
             return leaf;
         });
     };
 
-    const deleteLeaf = (id) => {
-        const updatedTree = deleteLeafRecursively(tree, id);
+    const deleteLeaf = () => {
+        const updatedTree = deleteLeafRecursively(tree, chosenLeafId);
         setTree(updatedTree);
+        setChosenLeafId(null);
     }
 
     const deleteLeafRecursively = (tree, id) => {
-        return tree.reduce((acc, leaf) => {
-            if (leaf.id === id) {
-                return acc;
+        return tree.filter(leaf => {
+            if (leaf.id === id) return false;
+            if (leaf.children.length > 0) {
+                leaf.children = deleteLeafRecursively(leaf.children, id);
             }
-            const updatedChildren = deleteLeafRecursively(leaf.children, id);
-            if (updatedChildren.length > 0 || leaf.children.length === 0) {
-                acc.push({...leaf, children: updatedChildren});
-            }
-        }, [])
+            return true;
+        });
+    }
+
+    const resetTree = () => {
+        setTree(baseLeaves);
+    }
+
+    const chooseLeaf = (id) => {
+        setChosenLeafId(id === chosenLeafId ? null : id);
+        console.log(chosenLeafId);
     }
 
 
     return (
-        <TreeContext.Provider value={{tree, setTree, addLeaf, deleteLeaf}}>
+        <TreeContext.Provider value={{tree, setTree, resetTree, addLeaf, deleteLeaf, chooseLeaf, chosenLeafId, setChosenLeafId}}>
             {children}
         </TreeContext.Provider>
     )
