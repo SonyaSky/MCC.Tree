@@ -6,7 +6,7 @@
     transition: color 0.4s ease, background-color 0.4s ease;
 }
 
-.leaf input {
+.leaf input, .leaf span {
     max-width: 70vw;
     width: fit-content;
     background-color: #040F0F; 
@@ -22,7 +22,7 @@
 }
 
 
-.leaf input:focus {
+.leaf input:focus , .leaf:hover span{
     outline: none;
     background-color: #fff;
     color: #040F0F;
