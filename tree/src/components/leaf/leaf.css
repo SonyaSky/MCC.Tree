@@ -1,53 +1,61 @@
 .leaf {
-    padding: 10px 20px;
-    background-color: #040F0F;
-    color: #fff;
-    border-radius: 15px;
-    transition: color 0.4s ease, background-color 0.4s ease;
+  padding: 10px 20px;
+  background-color: #040f0f;
+  color: #fff;
+  border-radius: 15px;
+  transition:
+    color 0.4s ease,
+    background-color 0.4s ease;
 }
 
-.leaf-area, .leaf span {
-    max-width: 70vw;
-    width: fit-content;
-    background-color: #040F0F; 
-    color: #fff; 
-    border: none; 
-    border-radius: 15px; 
-    font-size: 20px; 
-    font-weight: 700; 
-    word-wrap: break-word; 
-    overflow-wrap: break-word; 
-    box-sizing: border-box; 
-    display: inline-block;
-    white-space: normal;          
-    transition: color 0.4s ease, background-color 0.4s ease; 
+.leaf-area,
+.leaf span {
+  max-width: 70vw;
+  width: fit-content;
+  background-color: #040f0f;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  display: inline-block;
+  white-space: normal;
+  transition:
+    color 0.4s ease,
+    background-color 0.4s ease;
 }
 
-
-.leaf-area:focus , .leaf:hover span{
-    outline: none;
-    background-color: #fff;
-    color: #040F0F;
+.leaf-area:focus,
+.leaf:hover span {
+  outline: none;
+  background-color: #fff;
+  color: #040f0f;
 }
 
 .children-div {
-    margin: 5px 0px 0px 30px;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: start;
-    align-items: start; 
-    /* row-gap: 5px; */
+  margin: 5px 0px 0px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  /* row-gap: 5px; */
 }
 
-.leaf:hover, .leaf:hover .leaf-area, .leaf.chosen .leaf-area {
-    background-color: #fff;
-    color: #040F0F !important;
-    cursor: pointer !important;
+.leaf:hover,
+.leaf:hover span,
+.leaf.chosen span,
+.leaf.chosen .leaf-area {
+  background-color: #fff;
+  color: #040f0f !important;
+  cursor: pointer !important;
 }
 
 .leaf.chosen {
-    background-color: #fff;
-    color: #040F0F;
-    cursor: pointer;
-    border: 2px solid #040F0F;
+  background-color: #fff;
+  color: #040f0f;
+  cursor: pointer;
+  border: 2px solid #040f0f;
 }

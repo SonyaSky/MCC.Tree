@@ -1,25 +1,24 @@
 .blue-btn {
-    width: 225px;
-    padding: 15px 0px;
-    background-color: #058CD7;
-    color: #040F0F;
-    font-weight: bold;
-    font-size: 36px;
-    border: 2px solid #040F0F;
-    border-radius: 15px;
-    box-shadow: 3px 4px #040F0F;
-    transition: 0.3s ease-in-out;
-    
+  width: 225px;
+  padding: 15px 0px;
+  background-color: #058cd7;
+  color: #040f0f;
+  font-weight: bold;
+  font-size: 36px;
+  border: 2px solid #040f0f;
+  border-radius: 15px;
+  box-shadow: 3px 4px #040f0f;
+  transition: 0.3s ease-in-out;
 }
 
 .blue-btn:hover {
-    border: 2px solid #040F0F;
-    box-shadow: none;
-    translate: 3px 4px;
+  border: 2px solid #040f0f;
+  box-shadow: none;
+  translate: 3px 4px;
 }
 
 .blue-btn:active {
-    border: 2px solid #040F0F;
-    outline: none;
-    box-shadow: none;
+  border: 2px solid #040f0f;
+  outline: none;
+  box-shadow: none;
 }
