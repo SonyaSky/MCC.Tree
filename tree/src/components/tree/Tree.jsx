@@ -6,7 +6,7 @@ import Leaf from '../leaf/Leaf';
 import { useTree } from '../../context/TreeContext';
 
 const Tree = () => {
-    const {deleteLeaf, addLeaf, tree, resetTree, setChosenLeafId} = useTree();
+    const {deleteLeaf, addLeaf, tree, resetTree, setChosenLeafId, clearTree} = useTree();
 
     const handleDelete = () => {
         deleteLeaf();
@@ -30,6 +30,7 @@ const Tree = () => {
                 <Button title="Delete" onClick={handleDelete}/>
                 <Button title="Edit"/>
                 <Button title="Reset" onClick={resetTree}/>
+                <Button title="Clear" onClick={clearTree}/>
             </div>
             <div className='right-div'>
                 <h1 className='title'>tree</h1>

@@ -6,7 +6,7 @@
     transition: color 0.4s ease, background-color 0.4s ease;
 }
 
-.leaf input, .leaf span {
+.leaf-area, .leaf span {
     max-width: 70vw;
     width: fit-content;
     background-color: #040F0F; 
@@ -18,11 +18,13 @@
     word-wrap: break-word; 
     overflow-wrap: break-word; 
     box-sizing: border-box; 
+    display: inline-block;
+    white-space: normal;          
     transition: color 0.4s ease, background-color 0.4s ease; 
 }
 
 
-.leaf input:focus , .leaf:hover span{
+.leaf-area:focus , .leaf:hover span{
     outline: none;
     background-color: #fff;
     color: #040F0F;
@@ -37,10 +39,10 @@
     /* row-gap: 5px; */
 }
 
-.leaf:hover, .leaf:hover input, .leaf.chosen input {
+.leaf:hover, .leaf:hover .leaf-area, .leaf.chosen .leaf-area {
     background-color: #fff;
-    color: #040F0F;
-    cursor: pointer;
+    color: #040F0F !important;
+    cursor: pointer !important;
 }
 
 .leaf.chosen {

@@ -1,32 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './leaf.css';
 import { useTree } from '../../context/TreeContext';
 
 const Leaf = ({id, name, childrenLeaves}) => {
-    const [leafName, setLeafName] = useState(name);
-    const {chooseLeaf, chosenLeafId} = useTree();
+    const {chooseLeaf, chosenLeafId, renameLeaf} = useTree();
 
     const handleNameChange = (event) => {
-        setLeafName(event.target.value); 
+        renameLeaf(id, event.target.value); 
     };
 
     const handleClick = () => {
         chooseLeaf(id);
-        console.log(id);
     };
 
 
     return (
         <>
         <div className={chosenLeafId === id ? "leaf chosen" : "leaf"} onClick={handleClick}>
-        {chosenLeafId === id ?  
+        {/* {chosenLeafId === id ?  
             (<input
                 type="text"
-                value={leafName}
+                value={name}
                 onChange={handleNameChange}
                 autoFocus
-                disabled/>) : (<span>{leafName}</span>)}
+                />) : (<span>{name}</span>)} */}
+        {chosenLeafId === id ? 
+            (<textarea
+                className='leaf-area'
+                value={name}
+                onChange={handleNameChange}
+                onFocus={true}
+                rows={1}
+              />) : (<span>{name}</span>)}
         </div>
         <div className="children-div">
             {!childrenLeaves.Empty && childrenLeaves.map(({id, name, children}) => (
