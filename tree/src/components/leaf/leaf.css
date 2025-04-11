@@ -6,7 +6,7 @@
     transition: color 0.4s ease, background-color 0.4s ease;
 }
 
-.leaf input {
+.leaf-area, .leaf span {
     max-width: 70vw;
     width: fit-content;
     background-color: #040F0F; 
@@ -18,24 +18,31 @@
     word-wrap: break-word; 
     overflow-wrap: break-word; 
     box-sizing: border-box; 
+    display: inline-block;
+    white-space: normal;          
     transition: color 0.4s ease, background-color 0.4s ease; 
 }
 
 
-.leaf input:focus {
+.leaf-area:focus , .leaf:hover span{
     outline: none;
     background-color: #fff;
     color: #040F0F;
 }
 
 .children-div {
-    margin-left: 30px;
+    margin: 5px 0px 0px 30px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: start;
+    align-items: start; 
+    /* row-gap: 5px; */
 }
 
-.leaf:hover, .leaf:hover input, .leaf.chosen input {
+.leaf:hover, .leaf:hover .leaf-area, .leaf.chosen .leaf-area {
     background-color: #fff;
-    color: #040F0F;
-    cursor: pointer;
+    color: #040F0F !important;
+    cursor: pointer !important;
 }
 
 .leaf.chosen {

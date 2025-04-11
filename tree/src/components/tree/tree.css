@@ -21,6 +21,7 @@
     text-shadow: 3px 4px #040F0F;
     -webkit-text-stroke: 2px #040F0F;
     margin: 10px auto;
+    text-align: center;
 }
 
 .tree-container {
@@ -36,6 +37,6 @@
     flex-direction: column; 
     justify-content: start;
     align-items: start; 
-    row-gap: 5px;
+    /* row-gap: 5px; */
     padding: 10px 20px;
 }
