@@ -1,8 +1,15 @@
 #root {
   margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-body {
+/* body {
+  background-color: #FFC567;
+} */
+html, body {
+  height: 100%; 
+  margin: 0;    
   background-color: #FFC567;
 }
-

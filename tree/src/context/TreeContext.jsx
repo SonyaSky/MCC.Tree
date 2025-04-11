@@ -1,22 +1,13 @@
 import { createContext, useState, useContext, React } from 'react';
 
-
+import {baseTree} from './baseTree'
 
 export const TreeContext = createContext();
 
 export const TreeProvider = ({children}) => {
-    const getBaseTree = () => ([
-        {
-            id: 1, name: "Node 1", children:[{id: 3, name: "Node 3", children: []}]
-        },
-        {
-            id: 2, name: "Node 2", children: []
-        }
-    ]);
-    
-
-    const [tree, setTree] = useState(getBaseTree());
+    const [tree, setTree] = useState(baseTree);
     const [chosenLeafId, setChosenLeafId] = useState(null);
+    const [editing, setEditing] = useState(false);
 
     const addLeaf = (newLeaf) => {
         if (chosenLeafId === null) {
@@ -64,9 +55,7 @@ export const TreeProvider = ({children}) => {
     }
 
     const resetTree = () => {
-        console.log(tree);
-        setTree(getBaseTree());
-        console.log(tree);
+        setTree(baseTree);
     }
 
     const chooseLeaf = (id) => {
@@ -89,9 +78,21 @@ export const TreeProvider = ({children}) => {
         setTree(prev => updateLeafName(prev));
     };
 
+    const editLeaf = () => {
+        if (chosenLeafId != null) {
+            setEditing((prevEditing) => {
+                const nextEditing = !prevEditing;
+                if (!nextEditing) {
+                    setChosenLeafId(null);
+                }
+                return nextEditing;
+            });
+        }
+    }
+
 
     return (
-        <TreeContext.Provider value={{tree, setTree, resetTree, addLeaf, deleteLeaf, chooseLeaf, renameLeaf, clearTree, chosenLeafId, setChosenLeafId}}>
+        <TreeContext.Provider value={{tree, setTree, resetTree, addLeaf, editing, editLeaf, deleteLeaf, chooseLeaf, renameLeaf, clearTree, chosenLeafId, setChosenLeafId}}>
             {children}
         </TreeContext.Provider>
     )

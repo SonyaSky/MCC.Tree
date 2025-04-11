@@ -4,14 +4,16 @@ import './leaf.css';
 import { useTree } from '../../context/TreeContext';
 
 const Leaf = ({id, name, childrenLeaves}) => {
-    const {chooseLeaf, chosenLeafId, renameLeaf} = useTree();
+    const {chooseLeaf, chosenLeafId, renameLeaf, editing} = useTree();
 
     const handleNameChange = (event) => {
         renameLeaf(id, event.target.value); 
     };
 
     const handleClick = () => {
-        chooseLeaf(id);
+        if (!editing) {
+            chooseLeaf(id);
+        }
     };
 
 
@@ -25,12 +27,12 @@ const Leaf = ({id, name, childrenLeaves}) => {
                 onChange={handleNameChange}
                 autoFocus
                 />) : (<span>{name}</span>)} */}
-        {chosenLeafId === id ? 
+        {(chosenLeafId === id && editing) ? 
             (<textarea
                 className='leaf-area'
                 value={name}
+                autoFocus
                 onChange={handleNameChange}
-                onFocus={true}
                 rows={1}
               />) : (<span>{name}</span>)}
         </div>

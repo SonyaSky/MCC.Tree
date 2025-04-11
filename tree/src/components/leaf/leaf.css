@@ -39,7 +39,10 @@
     /* row-gap: 5px; */
 }
 
-.leaf:hover, .leaf:hover .leaf-area, .leaf.chosen .leaf-area {
+.leaf:hover, 
+.leaf:hover span, 
+.leaf.chosen span,
+.leaf.chosen .leaf-area {
     background-color: #fff;
     color: #040F0F !important;
     cursor: pointer !important;

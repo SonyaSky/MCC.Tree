@@ -6,7 +6,7 @@ import Leaf from '../leaf/Leaf';
 import { useTree } from '../../context/TreeContext';
 
 const Tree = () => {
-    const {deleteLeaf, addLeaf, tree, resetTree, setChosenLeafId, clearTree} = useTree();
+    const {deleteLeaf, addLeaf, tree, resetTree, setChosenLeafId, clearTree, editing, editLeaf} = useTree();
 
     const handleDelete = () => {
         deleteLeaf();
@@ -18,7 +18,7 @@ const Tree = () => {
     };
 
     const handleContainerClick = (e) => {
-        if (!e.target.closest('.leaf')) {
+        if (!(editing || e.target.closest('.leaf') || e.target.closest('.blue-btn')) ) {
             setChosenLeafId(null); 
         }
     };
@@ -28,7 +28,7 @@ const Tree = () => {
             <div className="buttons-div">
                 <Button title="Add" onClick={handleAddLeaf}/>
                 <Button title="Delete" onClick={handleDelete}/>
-                <Button title="Edit"/>
+                <Button title={editing ? "Save" : "Edit"} onClick={editLeaf}/>
                 <Button title="Reset" onClick={resetTree}/>
                 <Button title="Clear" onClick={clearTree}/>
             </div>
