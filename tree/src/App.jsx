@@ -1,18 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import './App.css'
-import Tree from './components/tree/Tree'
-import { TreeProvider } from './context/TreeContext'
+import './App.css';
+import Tree from './components/tree/Tree';
+import { TreeProvider } from './context/TreeContext';
 
 function App() {
-
   return (
     <>
-    <TreeProvider>
-    <Tree />
-    </TreeProvider>
+      <TreeProvider>
+        <Tree />
+      </TreeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

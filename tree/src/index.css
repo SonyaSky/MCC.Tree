@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #FFC567;
+  background-color: #ffc567;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,12 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 body {
   margin: 0;
   /* display: flex;
   place-items: center; */
-  background-color: #FFC567;
+  background-color: #ffc567;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -42,4 +41,3 @@ button {
 button:hover {
   border-color: #646cff;
 }
-
